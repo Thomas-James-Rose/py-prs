@@ -1,3 +1,5 @@
 from . import py_prs
+from . import reviews
+from . import config
 
-get_review_requests = py_prs.get_review_requests
+parse = py_prs.parse_command

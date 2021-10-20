@@ -1,29 +1,15 @@
-import requests
+import argparse
+import py_prs
 
-def get_review_requests():
-  query = """
-  {
-    search(query: "type:pr state:open review-requested:<USER_ID>", type: ISSUE, first: 100) {
-      issueCount
-      pageInfo {
-        endCursor
-        startCursor
-      }
-      edges {
-        node {
-          ... on PullRequest {
-            repository {
-              nameWithOwner
-            }
-            number
-            url
-          }
-        }
-      }
-    }
+parser = argparse.ArgumentParser(description='')
+parser.add_argument('command', metavar='cmd', type=str, help='')
+
+def parse_command():
+  args = parser.parse_args()
+  
+  commands = {
+    "list": py_prs.reviews.get_review_requests,
+    "set": py_prs.config.set
   }
-  """
 
-  response = requests.post("https://api.github.com/graphql", json={"query": query}, headers={"Authorization": "bearer <GH_ACCESS_TOKEN>"})
-  print(response.status_code)
-  print(response.text)
+  commands[args.command]()

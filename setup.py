@@ -5,7 +5,7 @@ setup(
   packages=find_packages(),
   entry_points={
     'console_scripts': [
-      'pullreviews = py_prs:get_review_requests',
+      'pyprs = py_prs:parse',
     ]
   },
   install_requires=[

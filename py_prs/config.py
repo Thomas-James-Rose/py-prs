@@ -4,9 +4,6 @@ import os
 config_path = f"{os.path.expanduser('~')}/.pyprs/config.json"
 
 def set(args):
-  os.makedirs(os.path.dirname(config_path), exist_ok=True)
-  open(config_path, "w")
-
   with open(config_path, "r") as config_file:
     try:
       config = json.load(config_file)

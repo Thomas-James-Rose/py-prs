@@ -12,4 +12,7 @@ def parse_command():
     "set": py_prs.config.set
   }
 
-  commands[args.command]()
+  if args.command not in commands:
+    print(f"Command {args.command} does not exist")
+  else:
+    commands[args.command]()

@@ -1,6 +1,6 @@
 import requests
 
-def get_review_requests():
+def get_review_requests(args):
   query = """
   {
     search(query: "type:pr state:open review-requested:<USER_ID>", type: ISSUE, first: 100) {

@@ -40,4 +40,10 @@ def get_review_requests(args):
 
   auth_header = Template("bearer $access_token").substitute(access_token=user_config["token"][0])
   response = requests.post("https://api.github.com/graphql", json={"query": query}, headers={"Authorization": auth_header})
-  print(response.text)
+
+  response_json = json.loads(response.text)
+  nodes = response_json["data"]["search"]["edges"]
+
+  for node in nodes:
+    print(node["node"]["url"])
+

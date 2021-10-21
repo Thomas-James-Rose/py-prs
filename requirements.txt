@@ -1,0 +1,5 @@
+pipx==0.16.4
+pylint==2.11.1
+pytest==6.2.5
+requests==2.26.0
+yapf==0.31.0

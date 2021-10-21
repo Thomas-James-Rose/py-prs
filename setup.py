@@ -7,7 +7,6 @@ setup(
         "pyprs = py_prs:parse",
     ]},
     install_requires=[
-        "pytest",
         "requests",
     ],
 )

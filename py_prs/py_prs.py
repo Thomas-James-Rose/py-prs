@@ -14,6 +14,7 @@ parser_set.set_defaults(func=config.set)
 parser_list = subparsers.add_parser("list", help="List PRs that need reviewing")
 parser_list.set_defaults(func=reviews.get_review_requests)
 
+
 def parse_command():
-  args = parser.parse_args()
-  args.func(args)
+    args = parser.parse_args()
+    args.func(args)

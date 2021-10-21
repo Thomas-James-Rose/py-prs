@@ -3,6 +3,28 @@ import requests
 from string import Template
 from . import config
 
+query_template = Template("""
+{
+  search(query: "type:pr state:open review-requested:$user_id", type: ISSUE, first: 100) {
+    issueCount
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    edges {
+      node {
+        ... on PullRequest {
+          repository {
+            nameWithOwner
+          }
+          number
+          url
+        }
+      }
+    }
+  }
+}
+""")
 
 def get_review_requests(args):
     with open(config.config_path, "r") as config_file:
@@ -20,28 +42,7 @@ def get_review_requests(args):
         )
         return
 
-    query = Template("""
-    {
-      search(query: "type:pr state:open review-requested:$user_id", type: ISSUE, first: 100) {
-        issueCount
-        pageInfo {
-          endCursor
-          startCursor
-        }
-        edges {
-          node {
-            ... on PullRequest {
-              repository {
-                nameWithOwner
-              }
-              number
-              url
-            }
-          }
-        }
-      }
-    }
-    """).substitute(user_id=user_config["user"][0])
+    query = query_template.substitute(user_id=user_config["user"][0])
 
     auth_header = Template("bearer $access_token").substitute(
         access_token=user_config["token"][0])

@@ -9,6 +9,7 @@ setup(
     ]
   },
   install_requires=[
+    'pytest',
     'requests',
   ],
 )

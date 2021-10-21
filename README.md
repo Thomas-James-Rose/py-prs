@@ -13,8 +13,8 @@ pipx uninstall py-prs
 ```
 
 ## Code formatting
-This project uses [`black`](https://pypi.org/project/black/) for code formatting. Simply install it and run:
+This project uses [`yapf`](https://github.com/google/yapf) for code formatting. Simply install it and run:
 
 ```sh
-black .
+yapf -r -i .
 ```

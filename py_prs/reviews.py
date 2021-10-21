@@ -20,8 +20,7 @@ def get_review_requests(args):
         )
         return
 
-    query = Template(
-        """
+    query = Template("""
   {
     search(query: "type:pr state:open review-requested:$user_id", type: ISSUE, first: 100) {
       issueCount
@@ -42,12 +41,10 @@ def get_review_requests(args):
       }
     }
   }
-  """
-    ).substitute(user_id=user_config["user"][0])
+  """).substitute(user_id=user_config["user"][0])
 
     auth_header = Template("bearer $access_token").substitute(
-        access_token=user_config["token"][0]
-    )
+        access_token=user_config["token"][0])
     response = requests.post(
         "https://api.github.com/graphql",
         json={"query": query},

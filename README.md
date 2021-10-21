@@ -13,6 +13,7 @@ pipx uninstall py-prs
 ```
 
 ## Code formatting
+
 This project uses [`yapf`](https://github.com/google/yapf) for code formatting. Simply install it and run:
 
 ```sh

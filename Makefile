@@ -11,7 +11,7 @@ lint:
 		pylint --rcfile=.pylintrc ./**/*.py
 
 format:
-		yapf -r -i .
+		yapf -r -i -p .
 
 .venv: 
 		python3 -m venv .venv

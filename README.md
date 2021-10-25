@@ -12,10 +12,29 @@ You can uninstall it using:
 pipx uninstall py-prs
 ```
 
-## Code formatting
+## Development
 
-This project uses [`yapf`](https://github.com/google/yapf) for code formatting. Simply install it and run:
+To setup the virtual environment and install dependencies in it run:
 
 ```sh
-yapf -r -i .
+make dev
+```
+
+Don't forget to activate the virtual environment:
+
+```sh
+# bash or zsh
+source .venv/bin/activate.fish
+
+# fish
+source .venv/bin/activate.fish
+
+# csh
+source .venv/bin/activate.csh
+```
+
+To run the tests:
+
+```sh
+make test
 ```

@@ -1,4 +1,4 @@
-# py_prs
+# PyPrs
 
 To install this as a CLI tool you will need [`pipx`](https://github.com/pypa/pipx). Once setup simply run the following in the root directory of this project:
 

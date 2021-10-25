@@ -8,7 +8,6 @@ from string import Template
 import py_prs
 
 test_config_path = f"{os.path.dirname(os.path.realpath(__file__))}/.pyprs/config.json"
-
 os.makedirs(os.path.dirname(test_config_path), exist_ok=True)
 
 

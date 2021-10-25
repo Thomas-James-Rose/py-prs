@@ -7,9 +7,6 @@ import sys
 import py_prs.console_colours
 import py_prs
 
-test_config_path = f"{os.path.dirname(os.path.realpath(__file__))}/.pyprs/config.json"
-os.makedirs(os.path.dirname(test_config_path), exist_ok=True)
-
 
 class MockResponse:
     def __init__(self, text):
@@ -51,7 +48,6 @@ def run_and_get_console_output(func):
 def test_get_review_requests(monkeypatch):
     mock_gh_response = MockResponse(mock_gh_response_text)
 
-    monkeypatch.setattr(py_prs.config, "config_path", test_config_path)
     monkeypatch.setattr(requests, "post",
                         lambda url, json, headers: mock_gh_response)
 
